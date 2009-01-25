@@ -1,0 +1,46 @@
+The package demoapp explains how to add one's onw program
+on top of Netgen. This is, e.g., a good students exercise 
+for a finite element class.
+
+
+
+Have a look into
+
+demoapp.tcl .... defining the GUI
+demoapp.cpp .... implementing the functions
+configure.ac ... configures the package
+Makefile.am .... defines the file structure
+
+
+compile with
+
+  ./configure --with-netgen=/opt/netgen
+  make
+
+install it with
+
+  make install
+
+
+Make sure that the directory /opt/netgen/lib is in your shared
+library search path (LD_LIBRARY_PATH=...)
+
+and start netgen. You should have a new menu-item "DemoApp"
+
+You can uninstall with
+
+  make uninstall
+
+
+
+And, how did Netgen find to demoapp ? 
+There is the command "load libdemoapp.so demoapp"
+at the end of /opt/netgen/bin/ng.tcl
+
+If it does not work, comment in the following two lines to 
+obtain the error-message.
+
+
+
+
+ 
