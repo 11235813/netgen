@@ -12,12 +12,23 @@ configure.ac ... configures the package
 Makefile.am .... defines the file structure
 
 
+
+if you've got the svn - version, run first
+
+  autoreconf --initial
+
+
+the download version does not require autoreconf, and thus
+does also not require installing the GNU autotools.
+
+
+
 compile with
 
   ./configure --with-netgen=/opt/netgen
   make
 
-install it with
+install with
 
   make install
 
@@ -27,10 +38,6 @@ library search path (LD_LIBRARY_PATH=...)
 
 and start netgen. You should have a new menu-item "DemoApp"
 
-You can uninstall with
-
-  make uninstall
-
 
 
 And, how did Netgen find to demoapp ? 
@@ -38,9 +45,12 @@ There is the command "load libdemoapp.so demoapp"
 at the end of /opt/netgen/bin/ng.tcl
 
 If it does not work, comment in the following two lines to 
-obtain the error-message.
+obtain a proper error-message.
 
 
 
 
- 
+You can uninstall with
+
+  make uninstall
+
