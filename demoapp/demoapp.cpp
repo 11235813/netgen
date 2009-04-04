@@ -90,10 +90,13 @@ int DA_SetSolution (ClientData clientData,
   return TCL_OK;
 }
 
+#ifdef WIN32
+#define DLL_HEADER __declspec(dllimport)
+#endif
 
 
 // initialize Tcl commands
-extern "C" int Demoapp_Init (Tcl_Interp * interp);
+extern "C" DLL_HEADER int Demoapp_Init (Tcl_Interp * interp);
 
 int Demoapp_Init (Tcl_Interp * interp)
 {
