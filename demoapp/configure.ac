@@ -6,8 +6,13 @@ AC_PREFIX_DEFAULT(["/opt/netgen"])
 
 AC_ARG_WITH([netgen], 
         [  --with-netgen=dir       use Netgen installed in directory dir],
-        [AC_SUBST([NETGEN_INCLUDES], ["-I$withval"])]
+        [netgendir=$withval],
+        [netgendir="/opt/netgen"]
         )
+
+
+AC_SUBST([NETGEN_INCLUDES], ["-I$netgendir/include"])
+
 
 AC_PROG_CC
 AC_PROG_CXX

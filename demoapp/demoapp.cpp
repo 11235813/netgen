@@ -1,6 +1,6 @@
 // ------------------------------------------------------------------
 /*!
-   \file demoapp.c
+   \file demoapp.cpp
    \brief Demonstration application for a Netgen Application Program
    \author Joachim Schoeberl
    \date 
@@ -15,7 +15,7 @@ using namespace std;
 #include <tcl.h>
 
 // netgen interface
-#include "nginterface.h"
+#include <nginterface.h>
 
 // Include the local header for declaration of locally 
 // exported functions
