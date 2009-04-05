@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\netgen\libsrc\include;&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(NETGENDIR)\..\include&quot;;&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;DEMOAPP_EXPORTS;MSVC_EXPRESS;WINVER=0x501"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -66,8 +66,8 @@
 				AdditionalDependencies="tcl85.lib nginterface.lib"
 				OutputFile="$(OutDir)\lib$(ProjectName).dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\..\netgen\windows\Release(OCC)-bin&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\lib&quot;"
-				ManifestFile="$(IntDir)\lib$(TargetFileName).intermediate.manifest"
+				AdditionalLibraryDirectories="&quot;$(NETGENDIR)\..\lib&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\lib&quot;"
+				ManifestFile="$(IntDir)\$(TargetFileName).intermediate.manifest"
 				EnableUAC="false"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -79,8 +79,8 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				OutputManifestFile="$(OutDir)\lib$(TargetFileName).embed.manifest"
-				ManifestResourceFile="$(OutDir)\lib$(TargetFileName).embed.manifest.res"
+				OutputManifestFile="$(OutDir)\$(TargetFileName).embed.manifest"
+				ManifestResourceFile="$(OutDir)\$(TargetFileName).embed.manifest.res"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -96,6 +96,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="&quot;$(ProjectDir)\postBuild&quot; &quot;$(ProjectName)&quot; &quot;$(TargetName)&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectDir)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -127,7 +128,7 @@
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories="..\..\netgen\libsrc\include;&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(NETGENDIR)\..\include&quot;;&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;DEMOAPP_EXPORTS;MSVC_EXPRESS;WINVER=0x501"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -150,8 +151,8 @@
 				AdditionalDependencies="tcl85.lib nginterface.lib"
 				OutputFile="$(OutDir)\lib$(ProjectName).dll"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="&quot;..\..\netgen\windows\Release(OCC)-bin&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\lib&quot;"
-				ManifestFile="$(IntDir)\lib$(TargetFileName).intermediate.manifest"
+				AdditionalLibraryDirectories="&quot;$(NETGENDIR)\..\lib&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\lib&quot;"
+				ManifestFile="$(IntDir)\$(TargetFileName).intermediate.manifest"
 				EnableUAC="false"
 				GenerateDebugInformation="false"
 				SubSystem="2"
@@ -159,7 +160,7 @@
 				EnableCOMDATFolding="0"
 				LinkTimeCodeGeneration="1"
 				ProfileGuidedDatabase=""
-				ImportLibrary="$(TargetDir)lib$(TargetName).lib"
+				ImportLibrary="$(TargetDir)$(TargetName).lib"
 				TargetMachine="1"
 				AllowIsolation="true"
 			/>
@@ -168,8 +169,8 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				OutputManifestFile="$(OutDir)\lib$(TargetFileName).embed.manifest"
-				ManifestResourceFile="$(OutDir)\lib$(TargetFileName).embed.manifest.res"
+				OutputManifestFile="$(OutDir)\$(TargetFileName).embed.manifest"
+				ManifestResourceFile="$(OutDir)\$(TargetFileName).embed.manifest.res"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -185,6 +186,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="&quot;$(ProjectDir)\postBuild&quot; &quot;$(ProjectName)&quot; &quot;$(TargetName)&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectDir)&quot;"
 			/>
 		</Configuration>
 	</Configurations>
