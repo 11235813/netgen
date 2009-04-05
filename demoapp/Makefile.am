@@ -1,5 +1,7 @@
 # ACLOCAL_AMFLAGS = -I m4
 
+include_HEADERS = demoapp.h
+
 AM_CPPFLAGS = $(NETGEN_INCLUDES)
 
 lib_LTLIBRARIES = libdemoapp.la
