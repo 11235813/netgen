@@ -16,7 +16,8 @@ if [%1]==[] goto InputParamsFailed
 set PROJ_NAME=%~1
 set PROJ_EXEC=%~2
 set BUILD_TYPE=%~3
-set PROJ_DIR=%~4
+set BUILD_ARCH=%~4
+set PROJ_DIR=%~5
 
 REM *** Change these Folders if required ***
 REM Check if the environment variable NETGENDIR exists, 
@@ -26,7 +27,7 @@ if defined NETGENDIR (
    set INSTALL_FOLDER=%NETGENDIR%\..
 ) else (
    echo Environment variable NETGENDIR not found.... using default location!!!
-   set INSTALL_FOLDER=%PROJ_DIR%..\..\%PROJ_NAME%-inst
+   set INSTALL_FOLDER=%PROJ_DIR%..\..\%PROJ_NAME%-inst_%BUILD_ARCH%
 )
 
 set APP_TCLSRC=%PROJ_DIR%..
@@ -35,15 +36,21 @@ set APP_TCLSRC=%PROJ_DIR%..
 echo POSTBUILD Script for %PROJ_NAME% ........
 
 REM *** Embed the Windows Manifest into the Executable File ***
-echo Embedding Manifest into the DLL: %PROJ_EXEC%.dll ....
-mt.exe -manifest "%BUILD_TYPE%\%PROJ_EXEC%.dll.intermediate.manifest" "-outputresource:%BUILD_TYPE%\%PROJ_EXEC%.dll;2" 
-if errorlevel 1 goto ManifestFailed
-echo Embedding Manifest into the DLL: Completed OK!!
+REM echo Embedding Manifest into the DLL: %PROJ_EXEC%.dll ....
+REM mt.exe -manifest "%BUILD_TYPE%\%PROJ_EXEC%.dll.intermediate.manifest" "-outputresource:%BUILD_TYPE%\%PROJ_EXEC%.dll;2" 
+REM if errorlevel 1 goto ManifestFailed
+REM echo Embedding Manifest into the DLL: Completed OK!!
 
 REM *** Copy the DLL and LIB Files into the install folder ***
 echo Installing application DLL file into %INSTALL_FOLDER%\bin ....
-xcopy "%PROJ_DIR%\%BUILD_TYPE%\%PROJ_EXEC%.dll" "%INSTALL_FOLDER%\bin\" /i /d /y
-if errorlevel 1 goto DLLInstallFailed
+if /i "%BUILD_ARCH%" == "win32" (
+   xcopy "%PROJ_DIR%\%BUILD_TYPE%\%PROJ_EXEC%.dll" "%INSTALL_FOLDER%\bin\" /i /d /y
+   if errorlevel 1 goto DLLInstallFailed
+)
+if /i "%BUILD_ARCH%" == "x64" (
+   xcopy "%PROJ_DIR%\%BUILD_ARCH%\%BUILD_TYPE%\%PROJ_EXEC%.dll" "%INSTALL_FOLDER%\bin\" /i /d /y
+   if errorlevel 1 goto DLLInstallFailed
+)   
 echo Installing %PROJ_EXEC%: Completed OK!!
 
 REM echo Installing application Lib file into %INSTALL_FOLDER%\lib ....

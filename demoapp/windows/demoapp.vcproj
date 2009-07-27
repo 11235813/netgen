@@ -12,6 +12,9 @@
 		<Platform
 			Name="Win32"
 		/>
+		<Platform
+			Name="x64"
+		/>
 	</Platforms>
 	<ToolFiles>
 	</ToolFiles>
@@ -42,7 +45,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="&quot;$(NETGENDIR)\..\include&quot;;&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\include&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;DEMOAPP_EXPORTS;MSVC_EXPRESS;WINVER=0x501"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;DEMOAPP_EXPORTS;MSVC_EXPRESS;WINVER=0x0600;NTDDI_VERSION=NTDDI_VISTA"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -68,7 +71,7 @@
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(NETGENDIR)\..\lib&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\lib&quot;"
 				ManifestFile="$(IntDir)\$(TargetFileName).intermediate.manifest"
-				EnableUAC="false"
+				EnableUAC="true"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				ImportLibrary="$(TargetDir)lib$(TargetName).lib"
@@ -96,7 +99,91 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="&quot;$(ProjectDir)\postBuild&quot; &quot;$(ProjectName)&quot; &quot;$(TargetName)&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectDir)&quot;"
+				CommandLine="&quot;$(ProjectDir)\postBuild&quot; &quot;$(ProjectName)&quot; &quot;$(TargetName)&quot; &quot;$(ConfigurationName)&quot; &quot;$(PlatformName)&quot; &quot;$(ProjectDir)&quot;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug|x64"
+			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;$(NETGENDIR)\..\include&quot;;&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl-64\include&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;DEMOAPP_EXPORTS;MSVC_EXPRESS;WINVER=0x501"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				EnableFunctionLevelLinking="true"
+				EnableEnhancedInstructionSet="1"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="tcl85.lib nginterface.lib"
+				OutputFile="$(OutDir)\lib$(ProjectName).dll"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="&quot;$(NETGENDIR)\..\lib&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl-64\lib&quot;"
+				ManifestFile="$(IntDir)\$(TargetFileName).intermediate.manifest"
+				EnableUAC="true"
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				ImportLibrary="$(TargetDir)lib$(TargetName).lib"
+				TargetMachine="17"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+				OutputManifestFile="$(OutDir)\$(TargetFileName).embed.manifest"
+				ManifestResourceFile="$(OutDir)\$(TargetFileName).embed.manifest.res"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="&quot;$(ProjectDir)\postBuild&quot; &quot;$(ProjectName)&quot; &quot;$(TargetName)&quot; &quot;$(ConfigurationName)&quot; &quot;$(PlatformName)&quot; &quot;$(ProjectDir)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -129,7 +216,7 @@
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="&quot;$(NETGENDIR)\..\include&quot;;&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\include&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;DEMOAPP_EXPORTS;MSVC_EXPRESS;WINVER=0x501"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;DEMOAPP_EXPORTS;MSVC_EXPRESS;WINVER=0x0600;NTDDI_VERSION=NTDDI_VISTA"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				EnableEnhancedInstructionSet="1"
@@ -153,7 +240,7 @@
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="&quot;$(NETGENDIR)\..\lib&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl\lib&quot;"
 				ManifestFile="$(IntDir)\$(TargetFileName).intermediate.manifest"
-				EnableUAC="false"
+				EnableUAC="true"
 				GenerateDebugInformation="false"
 				SubSystem="2"
 				OptimizeReferences="0"
@@ -186,7 +273,98 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="&quot;$(ProjectDir)\postBuild&quot; &quot;$(ProjectName)&quot; &quot;$(TargetName)&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectDir)&quot;"
+				CommandLine="&quot;$(ProjectDir)\postBuild&quot; &quot;$(ProjectName)&quot; &quot;$(TargetName)&quot; &quot;$(ConfigurationName)&quot; &quot;$(PlatformName)&quot; &quot;$(ProjectDir)&quot;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="true"
+				FavorSizeOrSpeed="1"
+				AdditionalIncludeDirectories="&quot;$(NETGENDIR)\..\include&quot;;&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl-64\include&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;DEMOAPP_EXPORTS;MSVC_EXPRESS;WINVER=0x0600;NTDDI_VERSION=NTDDI_VISTA"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
+				EnableEnhancedInstructionSet="1"
+				UsePrecompiledHeader="0"
+				WarningLevel="2"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="tcl85.lib nginterface.lib"
+				OutputFile="$(OutDir)\lib$(ProjectName).dll"
+				LinkIncremental="0"
+				AdditionalLibraryDirectories="&quot;$(NETGENDIR)\..\lib&quot;;&quot;$(SolutionDir)..\..\ext_libs\tcl-64\lib&quot;"
+				ManifestFile="$(IntDir)\$(TargetFileName).intermediate.manifest"
+				EnableUAC="true"
+				GenerateDebugInformation="false"
+				SubSystem="2"
+				OptimizeReferences="0"
+				EnableCOMDATFolding="0"
+				LinkTimeCodeGeneration="1"
+				ProfileGuidedDatabase=""
+				ImportLibrary="$(TargetDir)$(TargetName).lib"
+				TargetMachine="17"
+				AllowIsolation="true"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+				OutputManifestFile="$(OutDir)\$(TargetFileName).embed.manifest"
+				ManifestResourceFile="$(OutDir)\$(TargetFileName).embed.manifest.res"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="&quot;$(ProjectDir)\postBuild&quot; &quot;$(ProjectName)&quot; &quot;$(TargetName)&quot; &quot;$(ConfigurationName)&quot; &quot;$(PlatformName)&quot; &quot;$(ProjectDir)&quot;"
 			/>
 		</Configuration>
 	</Configurations>
