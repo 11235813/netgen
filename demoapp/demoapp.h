@@ -2,9 +2,9 @@
 #define DEMOAPP
 
 /**************************************************************************/
-/* File:   demoapp.h
-/* Author: Joachim Schoeberl
-/* Date:   
+/* File:   demoapp.h                                                      */
+/* Author: Joachim Schoeberl                                              */
+/* Date:                                                                  */
 /**************************************************************************/
 
 /*!

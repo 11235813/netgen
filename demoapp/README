@@ -15,11 +15,9 @@ Makefile.am .... defines the file structure
 
 if you've got the svn - version, run first
 
-  autoreconf --initial
+  autoreconf --install
 
-
-the download version does not require autoreconf, and thus
-does also not require installing the GNU autotools.
+this requires the packages 'automake' and 'libtool' installed.
 
 
 

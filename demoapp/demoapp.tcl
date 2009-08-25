@@ -1,8 +1,9 @@
+puts "loading demo-application"
+
 if { [catch { load libdemoapp[info sharedlibextension] demoapp } result] } {
     puts "cannot load demoapp" 
-	puts "error: $result"
+    puts "error: $result"
 } {
-    puts "loading demo-application"
 
     .ngmenu add cascade -label "DemoApp" -menu .ngmenu.demo -underline 0
  
