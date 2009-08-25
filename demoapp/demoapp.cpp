@@ -22,6 +22,12 @@ using namespace std;
 #include "demoapp.h"
 
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
+
+
 // ****** Local function declarations ******
 int DA_ChooseMe (ClientData clientData, Tcl_Interp * interp, int argc, const char *argv[]);
 int DA_PrintMesh (ClientData clientData, Tcl_Interp * interp, int argc, const char *argv[]);
@@ -33,7 +39,11 @@ int DA_SetSolution (ClientData clientData, Tcl_Interp * interp, int argc, const 
 // through TCL
 int Demoapp_Init (Tcl_Interp * interp)
 {
-  cout << "Init demoapp" << endl;
+  cout << "Init demoapp"
+#ifdef HAVE_CONFIG_H
+       << " - " << VERSION
+#endif
+       << endl;
 
   Tcl_CreateCommand (interp, "DA_ChooseMe", DA_ChooseMe,
 		     (ClientData)NULL,
