@@ -1,0 +1,65 @@
+The package dropsexp exports a netgen-generated mesh into a 
+drops-compatible format in file xyz, i.e. into a standard 
+fluent(gambit) format and eventually writes out second order 
+information into another file (ending with xyz.2nd).
+
+This package is based on the demoapp-package of netgen and 
+the fluent-ouput (part of netgen already).
+
+
+
+Have a look into
+
+dropsexp.tcl .... defining the GUI
+dropsexp.cpp .... implementing the functions
+configure.ac ... configures the package
+Makefile.am .... defines the file structure
+
+
+
+if you've got the svn - version, run first
+
+  autoreconf --install
+
+this requires the packages 'automake' and 'libtool' installed.
+
+
+
+configure with
+
+  ./configure --with-netgen=ABC --with-netgensrc=DEF --prefix=GHI
+
+with 
+  ABC: the directory where netgen is installed into 
+       (s.t. include files can be found)
+  DEF: the directory where netgen is installed from 
+       (s.t. other include files can be found)
+  GHI: the directory where netgen is installed into 
+       or where you want the new files want to be copied in 
+       (s.t. netgen can find and load the new lib)
+
+compile with
+
+  make
+
+install with
+
+  make install
+
+
+Make sure that the directory GHI/lib is in your shared
+library search path (LD_LIBRARY_PATH=...)
+
+Make sure that in the file ABC/bin/ng.tcl the following line exists
+(typically at the end of the file)
+"
+catch { source ${ngdir}/dropsexp.tcl }
+"
+
+and start netgen. You should have a new menu-item "DROPS-Export"
+
+
+You can uninstall with
+
+  make uninstall
+
