@@ -177,6 +177,15 @@ void WriteDropsFormat (const Mesh & mesh,
 
   BitArray curvedelements(ne);
   curvedelements.Clear();
+  int curvedels = 0;
+  int between[6][2]=
+  {{0,1},
+   {0,2},
+   {0,3},
+   {1,2},
+   {1,3},
+   {2,3}};
+
   for (i = 1; i <= ne; i++)
     {
       if (ne > 2000)
@@ -191,9 +200,25 @@ void WriteDropsFormat (const Mesh & mesh,
       //if (inverttets)
       //  el.Invert();
 	  
+        
       //outfile << el.GetIndex() << "    ";
       if (el.GetNP() == 10) 
-	{curvedelements.Set(i);/*cout << "found a curved tet" << endl*/;}
+	{
+        int matches = 0;
+        /*cout << "found a curved tet" << endl*/;
+        //test if element is really curved:
+        for (int j = 0; j < 6; j++){
+          Point3d pm = Center(mesh.Point(el.PNum(between[j][0]+1)),mesh.Point(el.PNum(between[j][1]+1)));
+          Vec3d d = pm - mesh.Point(el.PNum(j+4+1));
+          if (d.Length() < 1e-12){
+            matches++;
+          }
+        }             
+        if (matches != 6){ 
+          curvedelements.Set(i);
+          curvedels++;
+        }
+      }
       else if (el.GetNP() != 4) {cout << "only tet-meshes supported in drops-export!" << endl;}
 	  
       //faces:
@@ -265,6 +290,7 @@ void WriteDropsFormat (const Mesh & mesh,
 	    }
 	}
     }
+  cout << curvedels << " out of " << ne << " elements are curved " << endl;
   outfile << "))" << endl;
       
   sprintf(str,"(13 (2 %x %x 3 3)(",(noverbface+1),noverbface+nse); //hexadecimal!!!
